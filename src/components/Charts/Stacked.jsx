@@ -1,47 +1,31 @@
 import React from 'react'
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
- 
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
-// ChartJS.defaults.plugins.subtitle.display= "this is test"
-ChartJS.defaults.plugins.legend.display = false
-
-const Stacked = ({Data }) => {
-  const dataChart = {
-    labels: Data.map((data) => data.year),
-    datasets: [
-      {
-        label:"test",
-        data: Data.map((data) => data.userGain),
-        fill: false,
-        backgroundColor:Data.map((data) => data.bgColor),
-        borderColor: Data.map((data) => data.borderColor),
-        borderWidth: 1,
-      }]
-  };
+const Stacked = ({Data}) => {
   return (
-
-      <Bar data={dataChart} />
-    
+    <ResponsiveContainer width="100%" height="100%">
+        <BarChart
+          width={500}
+          height={300}
+          data={Data}
+          margin={{
+            top: 20,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+        
+          <XAxis dataKey="name" />
+        
+          <YAxis className='hidden md:inline-block' />
+          
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="Expense" stackId="a" fill="#8884d8" />
+          <Bar dataKey="Budget" stackId="a" fill="#82ca9d" />
+        </BarChart>
+      </ResponsiveContainer>
   )
 }
 

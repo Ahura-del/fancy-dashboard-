@@ -4,33 +4,37 @@ import { FaRegTimesCircle } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import { links } from "../data/dummy";
 import { useStateContext } from "../context/ContextProvider";
+import { Tooltip } from "@mui/material";
 const Sidebar = () => {
   const { activeMenu, setActiveMenu } = useStateContext();
   const handleCloseMenu = ()=>{
-    if(window.innerWidth <=900){
-      setActiveMenu(false)
-    }
+      // if(window.innerWidth <=900){
+        setActiveMenu(false)
+      // }
+    
   }
   const activeLink =
     "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg bg-gray-200 text-slate-800 dark:bg-secondary-dark-bg dark:text-slate-200 text-black text-md";
   const normalLink =
     "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray text-md";
   return (
-    <div className="pt-4 pb-10 px-6 overflow-auto h-screen">
+    <div className="pt-4 pb-10 px-5 overflow-auto h-screen">
       {activeMenu ? (
         <>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-5">
             <Link to="/" className="flex gap-3 items-center">
               <SiShopify className="text-3xl" />
               <h1 className="font-bold text-xl ">Fancy Shop</h1>
             </Link>
+            <Tooltip title="Close" placement="bottom">
             <button
-              className="md:hidden"
-              type="button"
-              onClick={() => setActiveMenu((prev) => !prev)}
-            >
+             className="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 hover:drop-shadow-lg"
+             type="button"
+             onClick={() => setActiveMenu(prev=>!prev)}
+             >
               <FaRegTimesCircle />
             </button>
+              </Tooltip>
           </div>
           <div className="mt-10 overflow-auto">
             {links.map((link, index) => (
@@ -83,7 +87,9 @@ const Sidebar = () => {
                         : "w-full flex items-center gap-5 p-3 rounded-lg text-gray-700 transition-colors duration-200 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray text-md"
                     }
                   >
+                    <Tooltip title={link.name} placement="right" >
                     <span className="text-xl inline-block">{link.icon}</span>
+                    </Tooltip>
                   </NavLink>
                 ))}
               </div>

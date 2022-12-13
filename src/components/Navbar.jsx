@@ -12,16 +12,18 @@ import Notification from "./Notification";
 import UserProfile from "./UserProfile";
 const Navbar = () => {
   const {setActiveMenu , isClicked , handleClicked} = useStateContext()
-
+  const handleActiveMenu = ()=>{
+    setActiveMenu(true)
+  }
   return (
-    <nav className="py-3 px-5 md:px-10 flex items-center justify-between">
-      <div className="flex items-center gap-4">
-        <button onClick={()=> setActiveMenu(prev => !prev)}>
-          <HiBars3BottomLeft className="text-xl text-teal-400" />
+    <nav className="py-3  flex items-center justify-between">
+      <div className="flex items-center gap-5">
+        <button onClick={handleActiveMenu} >
+          <HiBars3BottomLeft  className="text-2xl text-teal-400" />
         </button>
         <Tooltip title="Search" placement="bottom">
         <button>
-          <IoSearchOutline className="text-xl text-teal-400" />
+          <IoSearchOutline className="text-2xl text-teal-400" />
         </button>
         </Tooltip>
       </div>
@@ -29,17 +31,17 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-5">
         <Tooltip title="Cart" placement="bottom" >
         <button onClick={()=>handleClicked("cart")}>
-          <HiOutlineShoppingCart className="text-xl text-teal-400" />
+          <HiOutlineShoppingCart className="text-2xl text-teal-400" />
         </button>
         </Tooltip>
         <Tooltip title="Chat" placement="bottom" >
         <button onClick={()=>handleClicked("chat")}>
-          <BiMessageSquareError className="text-xl text-teal-400" />
+          <BiMessageSquareError className="text-2xl text-teal-400" />
         </button>
         </Tooltip>
         <Tooltip title="Notification" placement="bottom">
         <button onClick={()=>handleClicked("notification")}>
-          <BsBell className="text-xl text-teal-400" />
+          <BsBell className="text-2xl text-teal-400" />
         </button>
         </Tooltip>
         </div>

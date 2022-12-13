@@ -473,7 +473,7 @@ export const employeesGrid = [
     template: gridEmployeeProfile,
     textAlign: "Center",
   },
-  { field: "Name", headerText: "", width: "0", textAlign: "Center" },
+  // { field: "Name", headerText: "", width: "0", textAlign: "Center" },
   {
     field: "Title",
     headerText: "Designation",
@@ -481,6 +481,7 @@ export const employeesGrid = [
     textAlign: "Center",
   },
   {
+    field: "Country",
     headerText: "Country",
     width: "120",
     textAlign: "Center",
@@ -544,10 +545,10 @@ export const links = [
         name: "calendar",
         icon: <AiOutlineCalendar />,
       },
-      {
-        name: "kanban",
-        icon: <BsKanban />,
-      },
+      // {
+      //   name: "kanban",
+      //   icon: <BsKanban />,
+      // },
       {
         name: "editor",
         icon: <FiEdit />,
@@ -2718,198 +2719,219 @@ export const ordersData = [
   },
 ];
 
+
+export const initialData = {
+    tasks: {
+        'task-1': { id : 'task-1', content: 'take out'},
+        'task-2': { id : 'task-2', content: 'up out'},
+        'task-3': { id : 'task-3', content: 'down u'},
+        'task-4': { id : 'task-4', content: 'something'}
+    },
+    columns: {
+        'Sunday': {
+            id: 'Sunday',
+            title: 'To do',
+            taskIds: ['task-1', 'task-2', 'task-3', 'task-4'],
+        },
+        'Monday': {
+            id: 'Monday',
+            title: 'In progress',
+            taskIds: ['task-5', 'task-6'],
+        },
+        'Tuesday': {
+            id: 'Tuesday',
+            title: 'Active',
+            taskIds: ['task-7', 'task-8'],
+        },
+        'Wednesday': {
+            id: 'Wednesday',
+            title: 'More',
+            taskIds: [],
+        },
+        'Thursday': {
+            id: 'Thursday',
+            title: 'Bark More',
+            taskIds: [],
+        },
+        'Friday': {
+            id: 'Friday',
+            title: 'Good Friday',
+            taskIds: [],
+        },
+        'Saturday': {
+            id: 'Saturday',
+            title: 'Party',
+            taskIds: [],
+        }
+    },
+    // facilitate the ordering of columns
+    columnOrder: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+};
+
+
+
+const randomDate = (from, to) => {
+  from = from.getTime();
+  to = to.getTime();
+  return new Date(from + Math.random() * (to - from));
+};
+
+const getCurrentDate = (d) => {
+  let year = new Date().getFullYear();
+  let month = new Date().getMonth() + 1;
+  let day = new Date().getDate();
+  if (d) {
+    return `${year}-${month}-${day + 3}`;
+  }
+  return `${year}-${month}-${day}`;
+};
 export const scheduleData = [
   {
-    Id: 1,
-    Subject: "Explosion of Betelgeuse Star",
-    Location: "Space Center USA",
-    StartTime: "2021-01-10T04:00:00.000Z",
-    EndTime: "2021-01-10T05:30:00.000Z",
-    CategoryColor: "#1aaa55",
+    Id: "1",
+    title: "Explosion of Betelgeuse Star",
+    start: getCurrentDate(),
+    end: getCurrentDate(3),
   },
   {
-    Id: 2,
-    Subject: "Thule Air Crash Report",
-    Location: "Newyork City",
-    StartTime: "2021-01-11T06:30:00.000Z",
-    EndTime: "2021-01-11T08:30:00.000Z",
-    CategoryColor: "#357cd2",
+    Id: "2",
+    title: "Thule Air Crash Report",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 3,
-    Subject: "Blue Moon Eclipse",
-    Location: "Space Center USA",
-    StartTime: "2021-01-12T04:00:00.000Z",
-    EndTime: "2021-01-12T05:30:00.000Z",
-    CategoryColor: "#7fa900",
+    Id: "3",
+    title: "Blue Moon Eclipse",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 4,
-    Subject: "Meteor Showers in 2021",
-    Location: "Space Center USA",
-    StartTime: "2021-01-13T07:30:00.000Z",
-    EndTime: "2021-01-13T09:00:00.000Z",
-    CategoryColor: "#ea7a57",
+    Id: "4",
+    title: "Meteor Showers in 2021",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 5,
-    Subject: "Milky Way as Melting pot",
-    Location: "Space Center USA",
-    StartTime: "2021-01-14T06:30:00.000Z",
-    EndTime: "2021-01-14T08:30:00.000Z",
-    CategoryColor: "#00bdae",
+    Id: "5",
+    title: "Milky Way as Melting pot",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 6,
-    Subject: "Mysteries of Bermuda Triangle",
-    Location: "Bermuda",
-    StartTime: "2021-01-14T04:00:00.000Z",
-    EndTime: "2021-01-14T05:30:00.000Z",
-    CategoryColor: "#f57f17",
+    Id: "6",
+    title: "Mysteries of Bermuda Triangle",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 7,
-    Subject: "Glaciers and Snowflakes",
-    Location: "Himalayas",
-    StartTime: "2021-01-15T05:30:00.000Z",
-    EndTime: "2021-01-15T07:00:00.000Z",
-    CategoryColor: "#1aaa55",
+    Id: "7",
+    title: "Glaciers and Snowflakes",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 8,
-    Subject: "Life on Mars",
-    Location: "Space Center USA",
-    StartTime: "2021-01-16T03:30:00.000Z",
-    EndTime: "2021-01-16T04:30:00.000Z",
-    CategoryColor: "#357cd2",
+    Id: "8",
+    title: "Life on Mars",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 9,
-    Subject: "Alien Civilization",
-    Location: "Space Center USA",
-    StartTime: "2021-01-18T05:30:00.000Z",
-    EndTime: "2021-01-18T07:30:00.000Z",
-    CategoryColor: "#7fa900",
+    Id: "9",
+    title: "Alien Civilization",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 10,
-    Subject: "Wildlife Galleries",
-    Location: "Africa",
-    StartTime: "2021-01-20T05:30:00.000Z",
-    EndTime: "2021-01-20T07:30:00.000Z",
-    CategoryColor: "#ea7a57",
+    Id: "10",
+    title: "Wildlife Galleries",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 11,
-    Subject: "Best Photography 2021",
-    Location: "London",
-    StartTime: "2021-01-21T04:00:00.000Z",
-    EndTime: "2021-01-21T05:30:00.000Z",
-    CategoryColor: "#00bdae",
+    Id: "11",
+    title: "Best Photography 2021",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 12,
-    Subject: "Smarter Puppies",
-    Location: "Sweden",
-    StartTime: "2021-01-08T04:30:00.000Z",
-    EndTime: "2021-01-08T06:00:00.000Z",
-    CategoryColor: "#f57f17",
+    Id: "12",
+    title: "Smarter Puppies",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
+    EndTime: new Date().toISOString().replace(/T.*$/, "") + 3,
   },
   {
-    Id: 13,
-    Subject: "Myths of Andromeda Galaxy",
-    Location: "Space Center USA",
-    StartTime: "2021-01-06T05:00:00.000Z",
-    EndTime: "2021-01-06T07:00:00.000Z",
-    CategoryColor: "#1aaa55",
+    Id: "13",
+    title: "Myths of Andromeda Galaxy",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 14,
-    Subject: "Aliens vs Humans",
-    Location: "Research Center of USA",
-    StartTime: "2021-01-05T04:30:00.000Z",
-    EndTime: "2021-01-05T06:00:00.000Z",
-    CategoryColor: "#357cd2",
+    Id: "14",
+    title: "Aliens vs Humans",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
   {
-    Id: 15,
-    Subject: "Facts of Humming Birds",
-    Location: "California",
-    StartTime: "2021-01-19T04:00:00.000Z",
-    EndTime: "2021-01-19T05:30:00.000Z",
-    CategoryColor: "#7fa900",
-  },
-  {
-    Id: 16,
-    Subject: "Sky Gazers",
-    Location: "Alaska",
-    StartTime: "2021-01-22T05:30:00.000Z",
-    EndTime: "2021-01-22T07:30:00.000Z",
-    CategoryColor: "#ea7a57",
-  },
-  {
-    Id: 17,
-    Subject: "The Cycle of Seasons",
-    Location: "Research Center of USA",
-    StartTime: "2021-01-11T00:00:00.000Z",
-    EndTime: "2021-01-11T02:00:00.000Z",
-    CategoryColor: "#00bdae",
-  },
-  {
-    Id: 18,
-    Subject: "Space Galaxies and Planets",
-    Location: "Space Center USA",
-    StartTime: "2021-01-11T11:30:00.000Z",
-    EndTime: "2021-01-11T13:00:00.000Z",
-    CategoryColor: "#f57f17",
-  },
-  {
-    Id: 19,
-    Subject: "Lifecycle of Bumblebee",
-    Location: "San Fransisco",
-    StartTime: "2021-01-14T00:30:00.000Z",
-    EndTime: "2021-01-14T02:00:00.000Z",
-    CategoryColor: "#7fa900",
-  },
-  {
-    Id: 20,
-    Subject: "Alien Civilization",
-    Location: "Space Center USA",
-    StartTime: "2021-01-14T10:30:00.000Z",
-    EndTime: "2021-01-14T12:30:00.000Z",
-    CategoryColor: "#ea7a57",
-  },
-  {
-    Id: 21,
-    Subject: "Alien Civilization",
-    Location: "Space Center USA",
-    StartTime: "2021-01-10T08:30:00.000Z",
-    EndTime: "2021-01-10T10:30:00.000Z",
-    CategoryColor: "#ea7a57",
-  },
-  {
-    Id: 22,
-    Subject: "The Cycle of Seasons",
-    Location: "Research Center of USA",
-    StartTime: "2021-01-12T09:00:00.000Z",
-    EndTime: "2021-01-12T10:30:00.000Z",
-    CategoryColor: "#00bdae",
-  },
-  {
-    Id: 23,
-    Subject: "Sky Gazers",
-    Location: "Greenland",
-    StartTime: "2021-01-15T09:00:00.000Z",
-    EndTime: "2021-01-15T10:30:00.000Z",
-    CategoryColor: "#ea7a57",
-  },
-  {
-    Id: 24,
-    Subject: "Facts of Humming Birds",
-    Location: "California",
-    StartTime: "2021-01-16T07:00:00.000Z",
-    EndTime: "2021-01-16T09:00:00.000Z",
-    CategoryColor: "#7fa900",
+    Id: "15",
+    title: "Facts of Humming Birds",
+    date: randomDate(
+      new Date(new Date().getFullYear(), 0, 0),
+      new Date(new Date().getFullYear() + 1, 0, 0)
+    )
+      .toISOString()
+      .replace(/T.*$/, ""),
   },
 ];
 
@@ -2957,37 +2979,49 @@ export const dropdownData = [
     Time: "May 2021",
   },
 ];
-export const SparklineAreaData = [
+export const EcommerceChartData = [
   {
-    id: 1,
-    year: 2016,
-    userGain: 30,
-    userLost: 823,
+    name: "A",
+    Budget: 40,
+    Expense: 24,
+    amt: 24,
   },
   {
-    id: 2,
-    year: 2017,
-    userGain: 55,
-    userLost: 345,
+    name: "B",
+    Budget: 30,
+    Expense: 13,
+    amt: 22,
   },
   {
-    id: 3,
-    year: 2018,
-    userGain: 60,
-    userLost: 555,
+    name: "C",
+    Budget: 20,
+    Expense: 48,
+    amt: 22,
   },
   {
-    id: 4,
-    year: 2019,
-    userGain: 43,
-    userLost: 4555,
+    name: "D",
+    Budget: 27,
+    Expense: 39,
+    amt: 20,
   },
-  {
-    id: 5,
-    year: 2020,
-    userGain: 75,
-    userLost: 234,
-  },
+  // {
+  //   name: 'E',
+  //   uv: 10,
+  //   pv: 48,
+  //   amt: 21,
+  // },
+  // {
+  //   name: 'F',
+  //   uv: 20,
+  //   pv: 38,
+  //   amt: 25,
+  // },
+  // {
+  //   name: 'G',
+  //   uv: 30,
+  //   pv: 43,
+  //   amt: 20,
+  // },
 ];
 
 export const lineCustomSeries = [
@@ -3032,24 +3066,24 @@ export const pieChartData = [
   { x: "Insurance", y: 16, text: "16%" },
 ];
 
-export const contextMenuItems = [
-  "AutoFit",
-  "AutoFitAll",
-  "SortAscending",
-  "SortDescending",
-  "Copy",
-  "Edit",
-  "Delete",
-  "Save",
-  "Cancel",
-  "PdfExport",
-  "ExcelExport",
-  "CsvExport",
-  "FirstPage",
-  "PrevPage",
-  "LastPage",
-  "NextPage",
-];
+// export const contextMenuItems = [
+//   "AutoFit",
+//   "AutoFitAll",
+//   "SortAscending",
+//   "SortDescending",
+//   "Copy",
+//   "Edit",
+//   "Delete",
+//   "Save",
+//   "Cancel",
+//   "PdfExport",
+//   "ExcelExport",
+//   "CsvExport",
+//   "FirstPage",
+//   "PrevPage",
+//   "LastPage",
+//   "NextPage",
+// ];
 
 export const ecomPieChartData = [
   {

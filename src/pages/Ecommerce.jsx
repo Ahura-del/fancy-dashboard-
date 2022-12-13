@@ -3,12 +3,12 @@ import React from 'react'
 import {BsCurrencyDollar} from 'react-icons/bs';
 import {GoPrimitiveDot} from 'react-icons/go';
 import {Stacked , Pie , SparkLine, Button} from '../components'
-import {earningData , SparklineAreaData , ecomPieChartData} from '../data/dummy';
+import {earningData , EcommerceChartData , } from '../data/dummy';
 import {useStateContext} from '../context/ContextProvider'
 const Ecommerce = () => {
   return (
     <div className='pb-10'>
-      <div className='w-full flex flex-wrap lg:flex-nowrap justify-center gap-2'>
+      <div className=' flex flex-wrap lg:flex-nowrap justify-center gap-4'>
         <div className='bg-white dark:text-gray-200 dark:bg-secondary-dark-bg h-44 w-full lg:w-80 rounded-xl p-8 pt-9 bg-hero-pattern bg-no-repeat bg-center bg-cover '>
           <div className='flex items-center justify-start'>
             <div>
@@ -20,9 +20,9 @@ const Ecommerce = () => {
             <Button color="white" bgColor="blue" text="Download" borderRadius="10px" size="md" />
           </div>
         </div>
-        <div className='flex m-3 flex-wrap justify-center md:justify-start  gap-1 items-center'>
+        <div className='w-full grid grid-cols-2 md:grid-cols-4 gap-1'>
           {earningData.map((item)=>(
-            <div key={item.title} className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg  py-4 px-10 pt-9 rounded-2xl">
+            <div key={item.title} className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg flex flex-col items-center justify-center p-4 rounded-2xl">
                 <button type='button' className='text-2xl opacity-0.9 rounded-full p-4 hover:drop-shadow-xl' style={{color:item.iconColor , backgroundColor:item.iconBg}}>
                   {item.icon}
                 </button>
@@ -37,15 +37,15 @@ const Ecommerce = () => {
         </div>
       </div>
       <div className='flex gap-10 flex-wrap justify-center'>
-            <div className='bg-white w-full md:w-[80%] dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl '>
+            <div className='bg-white w-full md:w-[90%] dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl '>
               <div className='flex justify-between'>
                 <p className='text-xl font-semibold'>Revenue Updates</p>
-                <div className='flex items-center gap-4'>
-                  <p className='flex items-center gap-2 text-gray-600 hover:drop-shadow-xl'>
+                <div className='flex flex-wrap md:flex-nowrap  items-center gap-2 md:gap-4'>
+                  <p className='flex items-center gap-2 text-[#8884d8] hover:drop-shadow-xl'>
                     <span><GoPrimitiveDot/></span>
                     <span>Expense</span>
                   </p>
-                  <p className='flex items-center gap-2 text-green-400 hover:drop-shadow-xl'>
+                  <p className='flex items-center gap-2 text-[#82ca9d] hover:drop-shadow-xl'>
                     <span><GoPrimitiveDot/></span>
                     <span>Budget</span>
                   </p>
@@ -67,15 +67,15 @@ const Ecommerce = () => {
                     </p>
                     <p className='text-gray-500 mt-1'>Expense</p>
                   </div>
-                  <div className='h-full'>
-                    <SparkLine Data={SparklineAreaData} color="rgb(75, 192, 192)" />
+                  <div className='h-72 w-full' >
+                    <SparkLine Data={EcommerceChartData} color="rgb(75, 192, 192)" />
                   </div>
                   <div >
                     <Button text="Download Report" borderRadius="10px" color='white' bgColor="blue" />
                   </div>
                 </div>
-                <div className='md:col-span-6 md:flex md:items-center'>
-                  <Stacked Data={ecomPieChartData}  />
+                <div className='h-72 w-full md:h-full md:col-span-6 md:flex md:items-center'>
+                  <Stacked Data={EcommerceChartData}  />
                 </div>
               </div>
             </div>
