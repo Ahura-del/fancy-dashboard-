@@ -1,31 +1,56 @@
-import React , {createContext , useContext , useState} from 'react';
+import React, { createContext, useContext, useState } from "react";
 
-const StateContext = createContext()
+const StateContext = createContext();
 
 const initialState = {
-    chat:false,
-    cart:false,
-    userProfile:false,
-    notification:false
-}
+  chat: false,
+  cart: false,
+  userProfile: false,
+  notification: false,
+};
 
-export const ContextProvider = ({children})=>{
-    const [activeMenu , setActiveMenu] = useState(false)
-    const [isClicked , setIsClicked] = useState(initialState)
+export const ContextProvider = ({ children }) => {
+  const [activeMenu, setActiveMenu] = useState(false);
+  const [isClicked, setIsClicked] = useState(initialState);
+  const [currentColor, setCurrentColor] = useState("#03c9d7");
+  const [currentMode, setCurrentMode] = useState("Light");
+  const [themeSettings, setThemeSettings] = useState(false);
 
-    const handleClicked = (clicked)=>{
-        setIsClicked({...initialState , [clicked]:true})
-    }
+  const setMode = (e) => {
+    setCurrentMode(e.target.value);
+    localStorage.setItem("themeMode", e.target.value);
+    setThemeSettings(false)
+  };
+  const setColor = (e) => {
+    setCurrentColor(e);
+    localStorage.setItem("colorMode", e);
+    setThemeSettings(false)
 
+  };
 
+  const handleClicked = (clicked) => {
+    setIsClicked({ ...initialState, [clicked]: true });
+  };
 
-    return(
-        <StateContext.Provider
-            value={{activeMenu , setActiveMenu , isClicked , handleClicked }}
-        >
-            {children}
-        </StateContext.Provider>
-    )
-}
+  return (
+    <StateContext.Provider
+      value={{
+        activeMenu,
+        setActiveMenu,
+        isClicked,
+        handleClicked,
+        currentColor,
+        currentMode,
 
-export const useStateContext = ()=> useContext(StateContext)
+        themeSettings,
+        setThemeSettings,
+        setMode,
+        setColor
+      }}
+    >
+      {children}
+    </StateContext.Provider>
+  );
+};
+
+export const useStateContext = () => useContext(StateContext);

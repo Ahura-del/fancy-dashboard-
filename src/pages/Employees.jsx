@@ -20,7 +20,7 @@ const Employees = () => {
   const firstUserIndex = lastUserIndex - userPerPage;
   const currentUsers = employeesData.slice(firstUserIndex, lastUserIndex);
   return (
-    <div className="bg-white rounded-3xl mb-8 p-2 md:p-10 ">
+    <div className="bg-white rounded-3xl mb-8 p-5 md:p-10 ">
       <Header category="Page" title="Employees" />
       <div className="w-full">
         <TextField

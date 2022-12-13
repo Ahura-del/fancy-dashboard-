@@ -8,7 +8,7 @@ import {
   ColorMapping,
   ColorPicker,
   Customers,
-  Editor,
+  EditorPage,
   Employees,
   Kanban,
   Orders,
@@ -26,15 +26,17 @@ import { useStateContext } from "./context/ContextProvider";
 import { Tooltip } from "@mui/material";
 
 const App = () => {
-  const { activeMenu } = useStateContext();
+  const { activeMenu , themeSettings , setThemeSettings , currentColor,currentMode } = useStateContext();
   
   return (
     // <div className="grid grid-cols-12 w-screen h-screen overflow-hidden  dark:bg-main-bg bg-main-bg">
-    <div className="w-full h-screen overflow-hidden flex dark:bg-main-bg bg-main-bg ">
+    <div className={currentMode === "Dark" ? 'dark' : ''}>
 
+    <div className="w-full h-screen overflow-hidden flex dark:bg-main-dark-bg bg-main-bg ">
+      {themeSettings && <ThemeSettings/>}
       {activeMenu ? (
-
-        <div className="basis-1/5 fixed z-30 bg-white " >
+        
+        <div className="basis-1/5 fixed z-30 dark:bg-main-dark-bg bg-white " >
         <Sidebar/>
       </div>
         ):(
@@ -45,7 +47,7 @@ const App = () => {
       
       <div className="w-full h-full overflow-y-scroll">
         <div className="w-[90%] mx-auto ">
-<div className="fixed z-20 px-5 top-0 right-0 left-0 md:ml-28 dark:bg-main-bg bg-main-bg ">
+<div className="fixed z-20 px-5 top-0 right-0 left-0 md:ml-28 dark:bg-main-dark-bg bg-main-bg ">
 
       <Navbar />
 </div>
@@ -57,7 +59,7 @@ const App = () => {
         <Route path="/color-picker" element={<ColorPicker />} />
         <Route path="/color-mapping" element={<ColorMapping />} />
         <Route path="/customers" element={<Customers />} />
-        <Route path="/editor" element={<Editor />} />
+        <Route path="/editor" element={<EditorPage />} />
         <Route path="/employees" element={<Employees />} />
         <Route path="/kanban" element={<Kanban />} />
         <Route path="/orders" element={<Orders />} />
@@ -76,15 +78,16 @@ const App = () => {
    
       <div
         className="fixed bottom-4 right-5 w-12 h-12 flex justify-center items-center rounded-full"
-        style={{ background: "blue" }}
+        style={{ background: currentColor }}
       >
         <Tooltip title="Settings" placement="top">
-          <button type="button">
+          <button type="button" onClick={()=>setThemeSettings(true)}>
             <FiSettings className="text-slate-100 text-4xl" />
           </button>
         </Tooltip>
       </div>
     
+      </div>
       </div>
 
     //  <div

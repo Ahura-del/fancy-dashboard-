@@ -23,7 +23,7 @@ const Customers = () => {
   const currentUsers = customersData.slice(firstUserIndex, lastUserIndex);
 
   return (
-    <div className="bg-white rounded-3xl mb-8 p-2 md:p-10 ">
+    <div className="bg-white rounded-3xl mb-8 p-5 md:p-10 ">
       <Header category="Page" title="Customers" />
       <div className="w-full">
         <button

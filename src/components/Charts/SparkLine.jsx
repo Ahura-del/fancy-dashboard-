@@ -20,8 +20,8 @@ const SparkLine = ({Data , color}) => {
  
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="Expense" stroke="#8884d8" activeDot={{ r: 8 }} />
-      <Line type="monotone" dataKey="Budget" stroke="#82ca9d" />
+      <Line type="monotone" dataKey="Expense" stroke={color} activeDot={{ r: 8 }} />
+      <Line type="monotone" dataKey="Budget" stroke="#000" />
     </LineChart>
   </ResponsiveContainer>
   )

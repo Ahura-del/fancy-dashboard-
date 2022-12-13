@@ -57,6 +57,7 @@ const Calendar = () => {
           selectMirror={true}
           dayMaxEvents={true}
           events={[...scheduleData, event]}
+          
         />
       </div>
       {date.length > 0 && (

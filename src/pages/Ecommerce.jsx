@@ -6,6 +6,7 @@ import {Stacked , Pie , SparkLine, Button} from '../components'
 import {earningData , EcommerceChartData , } from '../data/dummy';
 import {useStateContext} from '../context/ContextProvider'
 const Ecommerce = () => {
+  const {currentColor} = useStateContext()
   return (
     <div className='pb-10'>
       <div className=' flex flex-wrap lg:flex-nowrap justify-center gap-4'>
@@ -17,7 +18,7 @@ const Ecommerce = () => {
             </div>
           </div>
           <div className='mt-6'>
-            <Button color="white" bgColor="blue" text="Download" borderRadius="10px" size="md" />
+            <Button color="white" bgColor={currentColor} text="Download" borderRadius="10px" size="md" />
           </div>
         </div>
         <div className='w-full grid grid-cols-2 md:grid-cols-4 gap-1'>
@@ -41,11 +42,11 @@ const Ecommerce = () => {
               <div className='flex justify-between'>
                 <p className='text-xl font-semibold'>Revenue Updates</p>
                 <div className='flex flex-wrap md:flex-nowrap  items-center gap-2 md:gap-4'>
-                  <p className='flex items-center gap-2 text-[#8884d8] hover:drop-shadow-xl'>
+                  <p className='flex items-center gap-2  hover:drop-shadow-xl' style={{color:currentColor}}>
                     <span><GoPrimitiveDot/></span>
                     <span>Expense</span>
                   </p>
-                  <p className='flex items-center gap-2 text-[#82ca9d] hover:drop-shadow-xl'>
+                  <p className='flex items-center gap-2 text-[#000] hover:drop-shadow-xl'>
                     <span><GoPrimitiveDot/></span>
                     <span>Budget</span>
                   </p>
@@ -68,14 +69,14 @@ const Ecommerce = () => {
                     <p className='text-gray-500 mt-1'>Expense</p>
                   </div>
                   <div className='h-72 w-full' >
-                    <SparkLine Data={EcommerceChartData} color="rgb(75, 192, 192)" />
+                    <SparkLine Data={EcommerceChartData} color={currentColor} />
                   </div>
                   <div >
-                    <Button text="Download Report" borderRadius="10px" color='white' bgColor="blue" />
+                    <Button text="Download Report" borderRadius="10px" color='white' bgColor={currentColor} />
                   </div>
                 </div>
                 <div className='h-72 w-full md:h-full md:col-span-6 md:flex md:items-center'>
-                  <Stacked Data={EcommerceChartData}  />
+                  <Stacked Data={EcommerceChartData} color={currentColor} />
                 </div>
               </div>
             </div>

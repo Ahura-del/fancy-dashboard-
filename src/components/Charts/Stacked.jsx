@@ -1,7 +1,7 @@
 import React from 'react'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const Stacked = ({Data}) => {
+const Stacked = ({Data , color}) => {
   return (
     <ResponsiveContainer width="100%" height="100%">
         <BarChart
@@ -22,8 +22,8 @@ const Stacked = ({Data}) => {
           
           <Tooltip />
           <Legend />
-          <Bar dataKey="Expense" stackId="a" fill="#8884d8" />
-          <Bar dataKey="Budget" stackId="a" fill="#82ca9d" />
+          <Bar dataKey="Expense" stackId="a" fill={color} />
+          <Bar dataKey="Budget" stackId="a" fill="#000" />
         </BarChart>
       </ResponsiveContainer>
   )

@@ -18,7 +18,7 @@ const Orders = () => {
   const currentPosts = ordersData.slice(firstPostIndex, lastPostIndex);
 
   return (
-    <div className="bg-white rounded-3xl mb-8 p-2 md:p-10 ">
+    <div className="bg-white rounded-3xl mb-8 p-5 md:p-10 ">
       <Header category="Page" title="Orders" />
       <TableContainer >
         <Table stickyHeader aria-label="sticky table">
