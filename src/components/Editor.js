@@ -5,9 +5,12 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { EditorState } from "draft-js";
 
 class EditorPage extends Component {
-  state = {
-    editorState: EditorState.createEmpty(),
-  };
+  constructor() {
+    super();
+    this.state = {
+      editorState: EditorState.createEmpty(),
+    };
+  }
 
   onEditorStateChange = (editorState) => {
     this.setState({ editorState });

@@ -7,11 +7,11 @@ const Stacked = () => {
   let series = [
     {
       name: "Expense",
-      data: [44, 55, 41, 67, 22],
+      data: [44, 55 ,42,23,26],
     },
     {
       name: "Budget",
-      data: [13, 23, 20, 8, 13],
+      data: [13, 23,24,42,18],
     },
   ];
 
@@ -33,7 +33,8 @@ const Stacked = () => {
         breakpoint: 500,
         options: {
           chart: {
-            width: 250,
+            width: 290,
+            height:300
           },
           legend: {
             position: "bottom",
@@ -100,7 +101,7 @@ const Stacked = () => {
 
   return (
     <div className="max-w-[700px]">
-      <Chart options={options} series={series} type="bar" width="500" />
+      <Chart options={options} series={series} type="bar" width="500"  />
     </div>
   );
 };
