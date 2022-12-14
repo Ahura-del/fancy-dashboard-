@@ -3,7 +3,7 @@ import { Header } from '../../components'
 import Chart from "react-apexcharts";
 import { useStateContext } from '../../context/ContextProvider';
 const ColorMapping = () => {
-  const { currentMode , currentColor } = useStateContext()
+  const { currentMode  } = useStateContext()
 
   let series= [{
     name: 'Cash Flow',
