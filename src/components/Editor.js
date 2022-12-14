@@ -21,7 +21,7 @@ class EditorPage extends Component {
           wrapperClassName="wrapperClassName"
           editorClassName="editorClassName"
           onEditorStateChange={this.onEditorStateChange}
-          editorStyle={{border:"1px solid #bbb" , height:"400px" , padding:"5px"}}
+          editorStyle={{border:"1px solid #bbb" , height:"400px" , padding:"5px" , color:'#888'}}
           />
     );
   }

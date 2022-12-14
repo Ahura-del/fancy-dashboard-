@@ -49,7 +49,7 @@ const Sidebar = () => {
                     <NavLink
                       key={ind}
                       onClick={handleCloseMenu}
-                      style={({isActive}) =>({backgroundColor: isActive ? currentColor :'' })}
+                      style={({isActive}) =>({backgroundColor: isActive ? currentColor :'' , color:isActive && "#fafafa" })}
                       to={link.name === "ecommerce" ? "/" : `/${link.name}`}
                       className={({ isActive }) =>
                         isActive ? activeLink : normalLink

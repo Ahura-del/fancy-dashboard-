@@ -14,7 +14,7 @@ import {
   Orders,
   Bar,
   Financial,
-  Line,
+  LineDiagram,
   Pie,
   Pyramid,
   Stacked,
@@ -66,7 +66,7 @@ const App = () => {
         <Route path="/area" element={<Area />} />
         <Route path="/bar" element={<Bar />} />
         <Route path="/financial" element={<Financial />} />
-        <Route path="/line" element={<Line />} />
+        <Route path="/line" element={<LineDiagram />} />
         <Route path="/pie" element={<Pie />} />
         <Route path="/pyramid" element={<Pyramid />} />
         <Route path="/stacked" element={<Stacked />} />

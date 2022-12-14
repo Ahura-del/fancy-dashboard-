@@ -23,12 +23,12 @@ const Customers = () => {
   const currentUsers = customersData.slice(firstUserIndex, lastUserIndex);
 
   return (
-    <div className="bg-white rounded-3xl mb-8 p-5 md:p-10 ">
+    <div className="bg-white dark:bg-secondary-dark-bg rounded-3xl mb-8 p-5 md:p-10 ">
       <Header category="Page" title="Customers" />
       <div className="w-full">
         <button
           type="button"
-          className="inline-flex p-2 rounded-xl items-center gap-2 bg-gray-50 hover:drop-shadow-lg "
+          className="inline-flex p-2 rounded-xl items-center gap-2 bg-gray-50 dark:bg-main-dark-bg hover:drop-shadow-lg "
         >
           <BiTrash className="text-red-500 text-2xl" />
           <span className="text-sm text-red-500 font-semibold">Delete</span>
@@ -42,9 +42,10 @@ const Customers = () => {
                     component="th"
                     key={index}
                     sx={{ whiteSpace: "nowrap" }}
+                    className="dark:text-slate-100"
                   >
                     {eGrid.headerText}
-                    {eGrid.type === "checkbox" && <Checkbox/>}
+                    {eGrid.type === "checkbox" && <Checkbox className="dark:text-slate-100"/>}
                   </TableCell>
                 ))}
               </TableRow>
@@ -53,7 +54,7 @@ const Customers = () => {
               {currentUsers.map((eData, index) => (
                 <TableRow key={index}>
                   <TableCell>
-                    <Checkbox  />
+                    <Checkbox className="dark:text-slate-200" />
                   </TableCell>
                   <TableCell>
                     <div className="image flex gap-4">
@@ -62,26 +63,26 @@ const Customers = () => {
                         src={eData.CustomerImage}
                         alt="employee"
                       />
-                      <div>
+                      <div className="dark:text-slate-200">
                         <p>{eData.CustomerName}</p>
                         <p>{eData.CustomerEmail}</p>
                       </div>
                     </div>
                   </TableCell>
-                  <TableCell>{eData.ProjectName}</TableCell>
-                  <TableCell>
+                  <TableCell className="dark:text-slate-200">{eData.ProjectName}</TableCell>
+                  <TableCell className="dark:text-slate-200">
                     <div className="flex items-center gap-2">
                       <div
-                        className="w-2 h-2 rounded-full"
+                        className="w-2 h-2 rounded-full "
                         style={{ background: eData.StatusBg }}
                       />
                       {eData.Status}
                     </div>
                   </TableCell>
-                  <TableCell>{eData.Weeks}</TableCell>
-                  <TableCell>{eData.Budget}</TableCell>
-                  <TableCell>{eData.Location}</TableCell>
-                  <TableCell>{eData.CustomerID}</TableCell>
+                  <TableCell className="dark:text-slate-200">{eData.Weeks}</TableCell>
+                  <TableCell className="dark:text-slate-200">{eData.Budget}</TableCell>
+                  <TableCell className="dark:text-slate-200">{eData.Location}</TableCell>
+                  <TableCell className="dark:text-slate-200">{eData.CustomerID}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -96,7 +97,7 @@ const Customers = () => {
           defaultPage={1}
           siblingCount={0}
           boundaryCount={1}
-          className="pt-8"
+          className="pt-8 dark:text-slate-200"
         />
       </div>
     </div>

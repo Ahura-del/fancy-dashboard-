@@ -18,7 +18,7 @@ const Orders = () => {
   const currentPosts = ordersData.slice(firstPostIndex, lastPostIndex);
 
   return (
-    <div className="bg-white rounded-3xl mb-8 p-5 md:p-10 ">
+    <div className="bg-white rounded-3xl dark:bg-secondary-dark-bg mb-8 p-5 md:p-10 ">
       <Header category="Page" title="Orders" />
       <TableContainer >
         <Table stickyHeader aria-label="sticky table">
@@ -28,6 +28,7 @@ const Orders = () => {
                 <TableCell
                   key={index}
                   sx={{ whiteSpace: "nowrap" }}
+                  className="dark:bg-secondary-dark-bg dark:text-slate-100"
                   align={order.headerText !== "Image" ? "center" : "left"}
                   component="th"
                 >
@@ -48,9 +49,9 @@ const Orders = () => {
                     className="rounded-xl"
                   />
                 </TableCell>
-                <TableCell align="center">{d.OrderItems}</TableCell>
-                <TableCell align="center">{d.CustomerName}</TableCell>
-                <TableCell align="center">$ {d.TotalAmount}</TableCell>
+                <TableCell className="dark:text-slate-200" align="center">{d.OrderItems}</TableCell>
+                <TableCell className="dark:text-slate-200" align="center">{d.CustomerName}</TableCell>
+                <TableCell className="dark:text-slate-200" align="center">$ {d.TotalAmount}</TableCell>
                 <TableCell align="center">
                   <p
                     className="text-white px-2 py-3 rounded-full"
@@ -59,8 +60,8 @@ const Orders = () => {
                     {d.Status}
                   </p>
                 </TableCell>
-                <TableCell align="center">{d.OrderID}</TableCell>
-                <TableCell align="center">{d.Location}</TableCell>
+                <TableCell className="dark:text-slate-200" align="center">{d.OrderID}</TableCell>
+                <TableCell className="dark:text-slate-200" align="center">{d.Location}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -76,7 +77,7 @@ const Orders = () => {
           defaultPage={1}
           siblingCount={0}
           boundaryCount={1}
-          className="pt-8"
+          className="pt-8 dark:text-slate-200"
         />
       </div>
     </div>

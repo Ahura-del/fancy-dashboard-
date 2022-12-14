@@ -2983,6 +2983,53 @@ export const dropdownData = [
     Time: "May 2021",
   },
 ];
+
+
+export const chartsData = [
+  {
+    name: "A",
+    A: 10,
+    B: 5,
+    amt: 0,
+  },
+  {
+    name: "B",
+    A: 20,
+    B: 13,
+    amt: 12,
+  },
+  {
+    name: "C",
+    A: 28,
+    B: 32,
+    amt: 22,
+  },
+  {
+    name: "D",
+    A: 35,
+    B: 40,
+    amt: 27,
+  },
+  {
+    name: "E",
+    A: 25,
+    B: 38,
+    amt: 25,
+  },
+  {
+    name: "F",
+    A: 40,
+    B: 38,
+    amt: 28,
+  },
+  {
+    name: "G",
+    A: 45,
+    B: 42,
+    amt: 29,
+  },
+];
+
 export const EcommerceChartData = [
   {
     name: "A",

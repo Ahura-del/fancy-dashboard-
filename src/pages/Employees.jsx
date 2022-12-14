@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import { Header } from "../components";
 import React, { useState } from "react";
-import { GrLocation } from "react-icons/gr";
 import { employeesData, employeesGrid } from "../data/dummy";
 const Employees = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -20,16 +19,17 @@ const Employees = () => {
   const firstUserIndex = lastUserIndex - userPerPage;
   const currentUsers = employeesData.slice(firstUserIndex, lastUserIndex);
   return (
-    <div className="bg-white rounded-3xl mb-8 p-5 md:p-10 ">
+    <div className="bg-white rounded-3xl mb-8 p-5 dark:bg-secondary-dark-bg md:p-10 ">
       <Header category="Page" title="Employees" />
       <div className="w-full">
-        <TextField
+        <input
           id="search"
           autoComplete="off"
-          className="w-full"
+          autoFocus
+          className="w-full bg-transparent outline-none border-b-1 dark:text-slate-50 dark:placeholder:text-slate-300 "
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
-          label="Search Employee name"
+          placeholder="Search Employee name"
           variant="standard"
         />
         <TableContainer>
@@ -41,6 +41,7 @@ const Employees = () => {
                     component="th"
                     key={index}
                     sx={{ whiteSpace: "nowrap", paddingRight: "15px" }}
+                    className="dark:text-slate-100"
                   >
                     {eGrid.headerText}
                   </TableCell>
@@ -57,7 +58,7 @@ const Employees = () => {
                 .map((eData, index) => (
                   <TableRow key={index}>
                     <TableCell>
-                      <div className="flex items-center gap-2 mr-10 md:mr-0">
+                      <div className="flex dark:text-slate-200 items-center gap-2 mr-10 md:mr-0">
                         <img
                           src={eData.EmployeeImage}
                           alt="employee"
@@ -66,16 +67,21 @@ const Employees = () => {
                         {eData.Name}
                       </div>
                     </TableCell>
-                    <TableCell>{eData.Title}</TableCell>
-                    <TableCell>
-                      <div className="flex items-center gap-2">
-                        <GrLocation />
-                        {eData.Country}
-                      </div>
+                    <TableCell className="dark:text-slate-200">
+                      {eData.Title}
                     </TableCell>
-                    <TableCell>{eData.HireDate}</TableCell>
-                    <TableCell>{eData.ReportsTo}</TableCell>
-                    <TableCell>{eData.EmployeeID}</TableCell>
+                    <TableCell className=" dark:text-slate-200">
+                      {eData.Country}
+                    </TableCell>
+                    <TableCell className="dark:text-slate-200">
+                      {eData.HireDate}
+                    </TableCell>
+                    <TableCell className="dark:text-slate-200">
+                      {eData.ReportsTo}
+                    </TableCell>
+                    <TableCell className="dark:text-slate-200">
+                      {eData.EmployeeID}
+                    </TableCell>
                   </TableRow>
                 ))}
             </TableBody>
